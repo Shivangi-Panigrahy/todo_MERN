@@ -1,0 +1,30 @@
+{
+  "name": "mern-todo-app",
+  "version": "1.0.0",
+  "description": "A full-stack MERN todo application with beautiful UI",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "test": "concurrently \"cd backend && npm test\" \"cd frontend && npm test\""
+  },
+  "keywords": [
+    "mern",
+    "todo",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "typescript",
+    "tailwindcss"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
