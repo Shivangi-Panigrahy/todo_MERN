@@ -36,13 +36,8 @@ app.get('/api/health', (req, res) => {
 // Routes
 app.use('/api/todos', require('./routes/todos'));
 
-// Serve static files from React in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../frontend/build')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-  });
-}
+// API-only backend - frontend will be deployed separately
+// Static file serving removed for separate frontend/backend deployment
 
 // Error handling middleware
 app.use((err, req, res, next) => {
