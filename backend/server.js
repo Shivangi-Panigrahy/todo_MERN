@@ -34,6 +34,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Routes
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/todos', require('./routes/todos'));
 
 // API-only backend - frontend will be deployed separately

@@ -7,8 +7,12 @@ const {
   deleteTodo,
   toggleTodo
 } = require('../controllers/todoController');
+const { protect } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Protect all todo routes
+router.use(protect);
 
 // Get all todos and create new todo
 router.get('/', getTodos);

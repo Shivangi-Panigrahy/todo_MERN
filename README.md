@@ -1,247 +1,185 @@
-# 🚀 MERN Todo Application
+# Todo App with JWT Authentication
 
-A full-stack todo application built with the MERN stack (MongoDB, Express.js, React.js, Node.js) featuring a beautiful, modern UI and comprehensive CRUD operations.
+A full-stack todo application with JWT-based authentication, allowing each user to have their own private todo list.
 
-![Todo App](https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
-![Node.js](https://img.shields.io/badge/Node.js-18-green?style=for-the-badge&logo=node.js)
-![MongoDB](https://img.shields.io/badge/MongoDB-6.0-green?style=for-the-badge&logo=mongodb)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-blue?style=for-the-badge&logo=tailwind-css)
+## Features
 
-## ✨ Features
+- **User Authentication**: Register and login with JWT tokens
+- **Private Todo Lists**: Each user can only see and manage their own todos
+- **Todo Management**: Create, read, update, delete, and toggle todos
+- **Filtering & Sorting**: Filter by completion status, priority, and category
+- **Modern UI**: Beautiful, responsive interface with Tailwind CSS
 
-### 🎯 Core Functionality
-- ✅ **Complete CRUD Operations** - Create, Read, Update, Delete todos
-- ✅ **Real-time Updates** - Instant UI updates without page refresh
-- ✅ **Advanced Filtering** - Filter by status, priority, category
-- ✅ **Smart Sorting** - Sort by date, title, priority, and more
-- ✅ **Priority Management** - Low, Medium, High priority levels
-- ✅ **Due Date Tracking** - Set and monitor due dates with visual indicators
-- ✅ **Category Organization** - Organize todos by categories
-- ✅ **Progress Tracking** - Visual progress bar and completion statistics
+## Tech Stack
 
-### 🎨 User Experience
-- 🎨 **Modern UI/UX** - Clean, responsive design with smooth animations
-- 📱 **Fully Responsive** - Works perfectly on desktop, tablet, and mobile
-- ⚡ **Fast Performance** - Optimized for speed and efficiency
-- 🔄 **Loading States** - Smooth loading indicators and transitions
-- 🚨 **Error Handling** - Comprehensive error handling and user feedback
-- 🎯 **Intuitive Interface** - Easy-to-use interface with clear visual hierarchy
+### Backend
+- **Node.js** with Express
+- **MongoDB** with Mongoose
+- **JWT** for authentication
+- **bcryptjs** for password hashing
 
-### 🛠 Technical Features
-- 🔒 **Type Safety** - Full TypeScript support for both frontend and backend
-- 🏗 **Modular Architecture** - Clean, maintainable code structure
-- 📊 **RESTful API** - Well-designed API with proper HTTP methods
-- 🗄 **Database Indexing** - Optimized database queries with indexes
-- 🔧 **Environment Configuration** - Flexible configuration management
-- 📝 **Comprehensive Documentation** - Detailed setup and usage guides
+### Frontend
+- **React** with TypeScript
+- **Tailwind CSS** for styling
+- **Axios** for API communication
 
-## 🏗 Project Structure
+## API Endpoints
 
-```
-todo/
-├── backend/                 # Node.js + Express API
-│   ├── config/             # Database and app configuration
-│   ├── controllers/        # Request handlers
-│   ├── middleware/         # Custom middleware
-│   ├── models/             # MongoDB schemas
-│   ├── routes/             # API routes
-│   ├── server.js           # Main server file
-│   └── package.json        # Backend dependencies
-├── frontend/               # React + TypeScript App
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── types/          # TypeScript definitions
-│   │   ├── utils/          # Utility functions
-│   │   └── App.tsx         # Main app component
-│   └── package.json        # Frontend dependencies
-└── README.md               # Project documentation
-```
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login user
+- `GET /api/auth/me` - Get current user (protected)
 
-## 🚀 Quick Start
+### Todos (All protected)
+- `GET /api/todos` - Get all todos for current user
+- `POST /api/todos` - Create new todo
+- `GET /api/todos/:id` - Get specific todo
+- `PUT /api/todos/:id` - Update todo
+- `DELETE /api/todos/:id` - Delete todo
+- `PATCH /api/todos/:id/toggle` - Toggle todo completion
+
+## Getting Started
+
+### Live Demo
+You can test the application at: [https://todo-mern-2-dc3q.onrender.com](https://todo-mern-2-dc3q.onrender.com)
+
+**Test Credentials:**
+- Email: `test@example.com`
+- Password: `password123`
 
 ### Prerequisites
-- Node.js (v16 or higher)
-- MongoDB (v5 or higher)
-- npm or yarn
+- Node.js (v14 or higher)
+- MongoDB (local or cloud)
 
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd todo
-```
+### Backend Setup
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-### 2. Backend Setup
-```bash
-cd backend
-npm install
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Create a `.env` file in the backend directory:
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/todo-app
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-NODE_ENV=development
-```
+3. Create a `.env` file with your configuration:
+   ```
+   NODE_ENV=development
+   PORT=8000
+   MONGODB_URI=mongodb://localhost:27017/todo-app
+   JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+   CLIENT_ORIGIN=http://localhost:3000
+   ```
 
-Start the backend server:
-```bash
-npm run dev
-```
+4. Start the server:
+   ```bash
+   npm run dev
+   ```
 
-### 3. Frontend Setup
-```bash
-cd ../frontend
-npm install
-npm start
-```
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
 
-### 4. Access the Application
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000/api
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## 📚 API Documentation
+3. Create a `.env` file with your configuration:
+   ```
+   REACT_APP_API_URL=http://localhost:8000/api
+   ```
 
-### Base URL
-```
-http://localhost:8000/api
-```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-### Endpoints
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-#### Todos
-- `GET /todos` - Get all todos (with optional filters)
-- `GET /todos/:id` - Get single todo
-- `POST /todos` - Create new todo
-- `PUT /todos/:id` - Update todo
-- `DELETE /todos/:id` - Delete todo
-- `PATCH /todos/:id/toggle` - Toggle todo completion
+## Authentication Flow
 
-#### Query Parameters
-- `completed` - Filter by completion status (true/false)
-- `priority` - Filter by priority (low/medium/high)
-- `category` - Filter by category
-- `sort` - Sort by field (default: -createdAt)
+1. **Registration**: Users can create a new account with name, email, and password
+2. **Login**: Users authenticate with email and password
+3. **Token Storage**: JWT tokens are stored in localStorage
+4. **Protected Routes**: All todo operations require authentication
+5. **User Isolation**: Each user can only access their own todos
 
-#### Health Check
-- `GET /health` - Check server status
+## Security Features
 
-### Request/Response Examples
+- **Password Hashing**: Passwords are hashed using bcryptjs
+- **JWT Tokens**: Secure token-based authentication
+- **User Isolation**: Database queries filter by user ID
+- **Input Validation**: Server-side validation for all inputs
+- **CORS Configuration**: Proper CORS setup for security
 
-#### Create Todo
-```bash
-POST /api/todos
-Content-Type: application/json
+## Database Schema
 
+### User Model
+```javascript
 {
-  "title": "Complete project documentation",
-  "description": "Write comprehensive README and API docs",
-  "priority": "high",
-  "category": "work",
-  "dueDate": "2024-01-15"
+  name: String (required),
+  email: String (required, unique),
+  password: String (required, hashed),
+  timestamps: true
 }
 ```
 
-#### Get Todos with Filters
-```bash
-GET /api/todos?completed=false&priority=high&sort=-createdAt
+### Todo Model
+```javascript
+{
+  user: ObjectId (required, ref: 'User'),
+  title: String (required),
+  description: String,
+  completed: Boolean (default: false),
+  priority: String (enum: ['low', 'medium', 'high']),
+  dueDate: Date,
+  category: String,
+  timestamps: true
+}
 ```
 
-## 🎨 UI Components
+## Testing the API
 
-### TodoItem
-- Beautiful card design with priority color coding
-- Inline editing capabilities
-- Visual indicators for due dates and completion status
-- Smooth hover animations
+You can test the authentication endpoints using curl:
 
-### TodoForm
-- Comprehensive form with all todo fields
-- Real-time validation
-- Responsive grid layout
-- Clean, modern design
-
-### TodoFilters
-- Advanced filtering options
-- Real-time filter updates
-- Clear visual feedback
-- Progress statistics
-
-## 🛠 Development
-
-### Backend Development
+### Register a new user
 ```bash
-cd backend
-npm run dev  # Start with nodemon for auto-reload
+curl -X POST http://localhost:8000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Test User", "email": "test@example.com", "password": "password123"}'
 ```
 
-### Frontend Development
+### Login
 ```bash
-cd frontend
-npm start    # Start development server
+curl -X POST http://localhost:8000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "test@example.com", "password": "password123"}'
 ```
 
-### Building for Production
+### Create a todo (with token)
 ```bash
-# Backend
-cd backend
-npm start
-
-# Frontend
-cd frontend
-npm run build
+curl -X POST http://localhost:8000/api/todos \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -d '{"title": "Test Todo", "description": "This is a test", "priority": "high"}'
 ```
 
-## 🧪 Testing
+## Deployment
 
-### Backend Testing
-```bash
-cd backend
-npm test
-```
+### Backend
+- Set `NODE_ENV=production`
+- Use a strong `JWT_SECRET`
+- Configure MongoDB connection string
+- Set up proper CORS origins
 
-### Frontend Testing
-```bash
-cd frontend
-npm test
-```
+### Frontend
+- Build the project: `npm run build`
+- Serve the build folder
+- Update API URL in environment variables
 
-## 📦 Deployment
+## License
 
-### Backend Deployment
-1. Set environment variables for production
-2. Build and deploy to your preferred hosting service
-3. Ensure MongoDB is accessible
-
-### Frontend Deployment
-1. Build the application: `npm run build`
-2. Deploy the `build` folder to your hosting service
-3. Update API base URL for production
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🙏 Acknowledgments
-
-- [React](https://reactjs.org/) - Frontend framework
-- [Express.js](https://expressjs.com/) - Backend framework
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Tailwind CSS](https://tailwindcss.com/) - CSS framework
-- [Lucide React](https://lucide.dev/) - Icons
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-
----
-
-**Happy Coding! 🎉** 
+This project is open source and available under the [MIT License](LICENSE). 

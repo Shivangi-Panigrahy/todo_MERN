@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
   title: {
     type: String,
     required: [true, 'Title is required'],
@@ -33,7 +38,9 @@ const todoSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Add index for better query performance
-todoSchema.index({ completed: 1, createdAt: -1 });
+// Add indexes for better query performance
+todoSchema.index({ user: 1, completed: 1, createdAt: -1 });
+todoSchema.index({ user: 1, priority: 1 });
+todoSchema.index({ user: 1, category: 1 });
 
 module.exports = mongoose.model('Todo', todoSchema); 
